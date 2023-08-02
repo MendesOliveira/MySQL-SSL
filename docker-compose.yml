@@ -1,0 +1,20 @@
+version: '2.0'
+
+services:
+
+  mysql:
+    build: .
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD= 'superroot' 
+      - MYSQL_DATABASE= 'meufarol'
+      - MYSQL_USER= 'root'
+      - MYSQL-PASSWORD= 'superroot'
+    restart: always      
+
+      
+

@@ -10,10 +10,10 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD= 'superroot' 
-      - MYSQL_DATABASE= 'meufarol'
-      - MYSQL_USER= 'root'
-      - MYSQL-PASSWORD= 'superroot'
+      - MYSQL_ROOT_PASSWORD= '${ROOT_PASSWORD}' 
+      - MYSQL_DATABASE= '${DATABASE}'
+      - MYSQL_USER= '${SECRET_USER}'
+      - MYSQL-PASSWORD= '${SECRET_PASSWORD}'
     restart: always      
 
       

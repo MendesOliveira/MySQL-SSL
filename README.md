@@ -16,34 +16,48 @@ As chaves de criptografia são uma tecnologia crucial para realização de expos
 
 Para realizar a instalação utilizaremos como exemplo um ambiente UNIX, no caso a seguir, estaremos utilizando o Ubuntu 22.04;
 
-Realização da instalação do Openssl, esta ferramenta será responsável pela criação do certificado auto-assinado que apontará para o hospedeiro do banco de dados. 
+Realização da instalação do Openssl, esta ferramenta será responsável pela criação do certificado auto-assinado que apontará para o hospedeiro do banco de dados;
 
 ```
 sudo apt-get install openssl -y
 ``` 
 
-Logo após, uma pasta será criada para armazenar os certificados digitais
+Logo após, uma pasta será criada para armazenar os certificados digitais;
 
 ```
 mkdir ./certs && cd ./certs
 ``` 
 
-Realize a criação da CA, Uma unidade Certificadora, como o certificado que será utilizado é um auto-assinado então a unidade certificadora será também o próprio Host do servidor. É importante que o CN(Comun Name) do OpenSSl seja descrito como o DNS do hospedeiro, ou o próprio Ip do servidor. 
+Realize a criação da CA, Uma unidade Certificadora, como o certificado que será utilizado é um auto-assinado então a unidade certificadora será também o próprio Host do servidor. É importante que o CN(Comun Name) do OpenSSl seja descrito como o DNS do hospedeiro, ou o próprio Ip do servidor;
 
 ```
 openssl genrsa 2048 > ca-key.pem
 ```
 
-Realizando a criação do certificado, e especulando o vencimento do mesmo a TAG (-days)
+Realizando a criação do certificado, e especulando o vencimento do mesmo a TAG (-days);
 
 ```
 openssl req -new -x509 -nodes -days 3600 \
         -key ca-key.pem -out ca.pem
 ```
 
-Criando o certificado do servidor, que será responsável por fazer a criptografia do tráfego que sai e entra do mesmo com o protocolo SSL.
+Criando o certificado do servidor, que será responsável por fazer a criptografia do tráfego que sai e entra do mesmo com o protocolo SSL;
 
 ```
 openssl req -newkey rsa:2048 -days 3600 \
         -nodes -keyout server-key.pem -out server-req.pem
 ```
+
+Alterando formato da chave para RSA;
+
+```
+openssl rsa -in server-key.pem -out server-key.pem
+```
+
+Vinculando CA ao certificado do servidor, para que o certificado aponte para a unidade certificadora auto-assinada;
+
+```
+openssl x509 -req -in server-req.pem -days 3600 \
+        -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
+```
+

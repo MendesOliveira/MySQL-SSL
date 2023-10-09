@@ -34,7 +34,7 @@ Realize a criação da CA, Uma unidade Certificadora, como o certificado que ser
 openssl genrsa 2048 > ca-key.pem
 ```
 
-Realizando a criação do certificado, e especulando o venciomento do mesmo a TAG (-days)
+Realizando a criação do certificado, e especulando o vencimento do mesmo a TAG (-days)
 
 ```
 openssl req -new -x509 -nodes -days 3600 \

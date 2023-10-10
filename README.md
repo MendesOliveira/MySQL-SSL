@@ -71,5 +71,15 @@ openssl x509 -req -in client-req.pem -days 3600 \
         -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
 ```
 
+Crie uma pasta aonde serão armazenados os arquivos de configuração do Docker e certificados digitais, logo após transfira os certificados criados para do OpenSSL para o diretório do Docker. Feito isso, basta apenas Clonar o repositório de configurações e subir a instância do Docker. 
 
+```
+git clone https://github.com/MendesOliveira/encrypt-mysql.git
+```
+
+Instanciando Docker;
+
+```
+docker compose up -d --build
+```
 

@@ -1,4 +1,4 @@
-# encrypt-mysql
+# MySQl-SSL
 
 Esse repositório tem como objetivo ajudar na realização de criação de banco de dados com maior segurança. Dessa vez será utilizada uma chave auto-assinada para servidor e cliente, que possibilitará a conexão ao banco apenas de usuários autorizados e que possuam acesso a chave privada disponibilizada pelo servidor para cliente. Dessa forma, toda e qualquer conexão estará por trás do SSL/TLS. 
 

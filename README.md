@@ -83,3 +83,8 @@ Instanciando Docker;
 docker compose up -d --build
 ```
 
+## Instalação
+
+Ao final dessa instalação, para conectar em seu container é necessário vincular o certificado de cliente com certificado, chave e unidade certificadora do Servidor. Ness exemplo, estaremos conectando ao Banco de Dados através do DBEAVER. 
+
+![encrypt](https://github.com/MendesOliveira/MySQL-SSL/assets/109288244/5d3833eb-749b-487d-b501-643714c8d3f7)

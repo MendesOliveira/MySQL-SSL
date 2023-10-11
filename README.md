@@ -83,7 +83,7 @@ Instanciando Docker;
 docker compose up -d --build
 ```
 
-## Instalação
+## Exemplos
 
 Ao final dessa instalação, para conectar em seu container é necessário vincular o certificado de cliente com certificado, chave e unidade certificadora do Servidor. Ness exemplo, estaremos conectando ao Banco de Dados através do DBEAVER. 
 
